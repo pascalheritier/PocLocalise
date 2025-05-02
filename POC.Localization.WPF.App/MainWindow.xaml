@@ -19,7 +19,7 @@
             <ItemsControl ItemsSource="{Binding ChatMessageViewModels, RelativeSource={RelativeSource AncestorType=local:MainWindow}}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Path=Value, Source={fw:CLocalise TranslationKeyBinding={Binding TranslationKey}}}"/>
+                        <TextBlock Text="{fw:CLocaliseChatMessage TranslationKeyBinding={Binding TranslationKey}}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

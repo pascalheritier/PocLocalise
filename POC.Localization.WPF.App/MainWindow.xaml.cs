@@ -41,29 +41,29 @@ public partial class MainWindow : Window
 
         // UI
         CStringLocalizerService.Instance.AddTranslation(
-        TestCulture2,
+            _strCulture,
             CResourceHelper.GetResourceKeyFromPropertyName(nameof(POC_Localization_WPF_App.UI_Text)),
             POC_Localization_WPF_App.UI_Text + " " + _strCulture);
 
         CStringLocalizerService.Instance.AddTranslation(
-            TestCulture2,
+            _strCulture,
             CResourceHelper.GetResourceKeyFromPropertyName(nameof(POC_Localization_WPF_App.UI_Text2)),
             POC_Localization_WPF_App.UI_Text2 + " " + _strCulture);
 
         CStringLocalizerService.Instance.AddTranslation(
-            TestCulture2,
+            _strCulture,
             CResourceHelper.GetResourceKeyFromPropertyName(nameof(POC_Localization_WPF_App.UI_Text3)),
             POC_Localization_WPF_App.UI_Text3 + " " + _strCulture);
 
         // PLUGIN
         // in real context, we do not have direct access to plugin, this is simplified in the poc
         CStringLocalizerService.Instance.AddTranslation(
-            TestCulture2,
+            _strCulture,
             CResourceHelper.GetResourceKeyFromPropertyName(nameof(POC_Localization_Plugin1.POC_Localization_Plugin1_Parameter1_AAAA)),
             POC_Localization_Plugin1.POC_Localization_Plugin1_Parameter1_AAAA + " " + _strCulture);
 
         CStringLocalizerService.Instance.AddTranslation(
-            TestCulture2,
+            _strCulture,
             CResourceHelper.GetResourceKeyFromPropertyName(nameof(POC_Localization_Plugin1.POC_Localization_Plugin1_SecondParameter)),
             POC_Localization_Plugin1.POC_Localization_Plugin1_SecondParameter + " " + _strCulture);
     }
