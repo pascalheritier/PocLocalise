@@ -1,9 +1,10 @@
 ﻿using Microsoft.Extensions.Localization;
+using System.ComponentModel;
 using System.Globalization;
 
 namespace POC.Localization.WPF.Framework;
 
-public class CStringLocalizerService : IStringLocalizer
+public class CStringLocalizerService : IStringLocalizer, INotifyPropertyChanged
 {
     #region Singleton
 
@@ -28,8 +29,18 @@ public class CStringLocalizerService : IStringLocalizer
 
     #region Culture
 
-    public string SelectedCulture { get; private set; } = CultureInfo.CurrentCulture.Name;
-
+    private string m_strSelectedCulture = CultureInfo.CurrentCulture.Name;
+    public string SelectedCulture
+    {
+        get => m_strSelectedCulture;
+        set
+        {
+            if (m_strSelectedCulture == value)
+                return;
+            m_strSelectedCulture = value;
+            OnPropertyChanged(nameof(SelectedCulture));
+        }
+    }
     public event EventHandler? CultureChanged;
 
     private void RaisCultureChanged()
@@ -83,7 +94,14 @@ public class CStringLocalizerService : IStringLocalizer
     public IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures)
     {
         throw new NotImplementedException();
-    } 
+    }
+
+    #endregion
+
+    #region INotifyPropertyChanged
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+    protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
     #endregion
 }

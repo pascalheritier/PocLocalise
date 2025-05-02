@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
 
@@ -15,6 +16,14 @@ public class CLocaliseChatMessageExtension : MarkupExtension
         var multiBinding = new MultiBinding { Mode = BindingMode.OneWay };
         multiBinding.Bindings.Add(TranslationKeyBinding);
         multiBinding.Converter = new LocaliseInternalConverter();
+
+        // UI trick: bind to culture selection to force refresh on culture change
+        multiBinding.Bindings.Add(new Binding
+        {
+            Source = CStringLocalizerService.Instance,
+            Path = new PropertyPath(nameof(CStringLocalizerService.Instance.SelectedCulture)),
+            Mode = BindingMode.OneWay
+        });
 
         return multiBinding.ProvideValue(serviceProvider);
     }
