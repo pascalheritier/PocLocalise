@@ -8,9 +8,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
-        <TextBlock Text="{Binding Path=Value, Source={fw:CLocalise ResourceProvider={x:Static local:CResourceProvider.UI_Text}}}" />
-        <TextBlock Text="{Binding Path=Value, Source={fw:CLocalise ResourceProvider={x:Static local:CResourceProvider.UI_Text2}}}" />
-        <TextBlock Text="{Binding Path=Value, Source={fw:CLocalise ResourceProvider={x:Static local:CResourceProvider.UI_Text3}}}" />
+        <GroupBox Header="UI">
+            <StackPanel>
+                <TextBlock Text="{Binding Path=Value, Source={fw:CLocalise ResourceProvider={x:Static local:CResourceProvider.UI_Text}}}" />
+                <TextBlock Text="{Binding Path=Value, Source={fw:CLocalise ResourceProvider={x:Static local:CResourceProvider.UI_Text2}}}" />
+                <TextBlock Text="{Binding Path=Value, Source={fw:CLocalise ResourceProvider={x:Static local:CResourceProvider.UI_Text3}}}" />
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Chat messages">
+            <ItemsControl ItemsSource="{Binding ChatMessageViewModels, RelativeSource={RelativeSource AncestorType=local:MainWindow}}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=Value, Source={fw:CLocalise TranslationKeyBinding={Binding TranslationKey}}}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </GroupBox>
         <Button Click="TranslateToCulture1" Content="Translate to culture 1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Button Click="TranslateToCulture2" Content="Translate to culture 2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </StackPanel>

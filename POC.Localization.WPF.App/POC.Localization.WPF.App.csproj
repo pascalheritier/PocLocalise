@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\POC.Localization.Plugin1\POC.Localization.Plugin1.csproj" />
     <ProjectReference Include="..\POC.Localization.WPF.Framework\POC.Localization.WPF.Framework.csproj" />
     <ProjectReference Include="..\ResxKeyWrapperGen\ResxKeyWrapperGen.csproj" OutputItemType="Analyzer" />
   </ItemGroup>
